@@ -219,16 +219,17 @@ public class CondingbatWarmup1 {
      */
     public static boolean icyHot(int temp1, int temp2) {
         boolean isIcyHot = false;
-        if (temp1 > 100) {
-            if (temp2 < 0) {
-                isIcyHot = true;
-            }
-        } else if (temp1 < 0) {
-            if (temp2 > 100) {
-                isIcyHot = true;
-            }
+        if ((temp1 < 0) && (temp2 > 100) || (temp2 < 0) && (temp1 > 100)) {
+            isIcyHot = true;
         }
         return isIcyHot;
+        /*
+        if ((temp1 < 0) && (temp2 > 100) || (temp2 < 0) && (temp1 > 100)) {
+            return true;
+        } else {
+            return false;
+        }
+         */
     }
 
     /* Given a string, return true if the string starts with "hi" and false otherwise.
