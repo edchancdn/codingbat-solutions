@@ -1,6 +1,6 @@
 package org.example;
 
-public class CondingbatWarmup1 {
+public class CodingbatWarmup1 {
     public static void main(String[] args) {
         /*
         System.out.println(startOz("ozwizard"));
