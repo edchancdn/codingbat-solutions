@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc621245-ed80-49a6-b535-4ae4d4ad744f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CodingbatWarmup2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CodingbatWarmup2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,15 +34,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Application.CodingbatWarmup2">
     <configuration name="CodingbatWarmup1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.CodingbatWarmup1" />
       <module name="codingbat-solutions" />
@@ -55,8 +57,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CodingbatWarmup2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.CodingbatWarmup2" />
+      <module name="codingbat-solutions" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CodingbatWarmup2" />
         <item itemvalue="Application.CodingbatWarmup1" />
       </list>
     </recent_temporary>
@@ -71,6 +87,8 @@
       <updated>1662414611988</updated>
       <workItem from="1662414613916" duration="424000" />
       <workItem from="1662415100322" duration="3954000" />
+      <workItem from="1662428811023" duration="691000" />
+      <workItem from="1662467088250" duration="5756000" />
     </task>
     <servers />
   </component>
