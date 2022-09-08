@@ -54,7 +54,7 @@ public class CodingbatWarmup2 {
         System.out.println(cb.arrayFront9(b4));
         int[] b5 = {1, 9};
         System.out.println(cb.arrayFront9(b5));
-        */
+
         int[] c1 = {1, 1, 2, 3, 1};
         System.out.println(cb.array123(c1));
         int[] c2 = {1, 1, 2, 4, 1};
@@ -62,8 +62,146 @@ public class CodingbatWarmup2 {
         int[] c3 = {1, 1, 2, 1, 2, 3};
         System.out.println(cb.array123(c3));
 
+        System.out.println(cb.stringMatchV2("xxcaazz", "xxbaaz"));
+        System.out.println(cb.stringMatchV2("abc", "abc"));
+        System.out.println(cb.stringMatchV2("abc", "axc"));
+        System.out.println(cb.stringMatchV2("xxcaazztfghe", "xxbaaz"));  // test case where string lengths are not same.
 
+        System.out.println(cb.stringX("xxHxix"));
+        System.out.println(cb.stringX("abxxxcd"));
+        System.out.println(cb.stringX("xabxxxcdx"));
+        */
+        System.out.println(cb.altPairsV2("kitten"));
+        System.out.println(cb.altPairsV2("Chocolate"));
+        System.out.println(cb.altPairsV2("CodingHorror"));
     }
+
+    /* Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
+    altPairs("kitten") → "kien"
+    altPairs("Chocolate") → "Chole"
+    altPairs("CodingHorror") → "Congrr"
+     */
+    public String altPairs(String str) {
+        String rtnVal = "";
+        // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
+        for (int i=0; i<str.length(); i+=4) {
+            // if string length is an odd number and the loop pointer is at the last char,
+            // then just concatenate the last char.
+            if ((str.length() % 2) != 0 && i == str.length()-1) {
+                rtnVal = rtnVal.concat(str.substring(i,i+1));
+                break;
+            } else {
+                // otherwise concatenate the 2 chars in current position.
+                rtnVal = rtnVal.concat(str.substring(i,i+2));
+            }
+        }
+        return rtnVal;
+    }
+
+    /* This variant of the altPairs() that uses the string length value as the substring end parameter.
+     */
+    public String altPairsV2(String str) {
+        String rtnVal = "";
+        // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
+        for (int i=0; i<str.length(); i+=4) {
+            // get end position, if end position is greater than the string length,
+            // then set the end position to the string length.
+            int endPos = i+2;
+            if (endPos > str.length()) {
+                endPos = str.length();
+            }
+            rtnVal = rtnVal.concat(str.substring(i,endPos));
+        }
+        return rtnVal;
+    }
+
+
+    /* Given a string, return a version where all the "x" have been removed.
+    Except an "x" at the very start or end should not be removed.
+    stringX("xxHxix") → "xHix"
+    stringX("abxxxcd") → "abcd"
+    stringX("xabxxxcdx") → "xabcdx"
+     */
+    public String stringX(String str) {
+        String rtnVal = "";
+        for (int i = 0; i < str.length(); i++) {
+            // concat to return string if start char is 'x' or end char is 'x'.
+            if (((i == 0) || (i == str.length()-1)) && (str.substring(i,i+1).equals("x"))) {
+                rtnVal = rtnVal.concat(str.substring(i,i+1));
+            } else {
+                // skip if char is 'x'.
+                if (!str.substring(i,i+1).equals("x")) {
+                    rtnVal = rtnVal.concat(str.substring(i,i+1));
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* This is a variant of stringX() that uses String.charAt(i) instead of String.substring(i,i+1)
+     */
+    public String stringXV2(String str) {
+        String rtnVal = "";
+        for (int i = 0; i < str.length(); i++) {
+            // concat to return string if start char is 'x' or end char is 'x'.
+            if (((i == 0) || (i == str.length()-1)) && (str.charAt(i) == 'x')) {
+                rtnVal = rtnVal.concat(str.substring(i,i+1));
+            } else {
+                // skip if char is 'x'.
+                if (str.charAt(i) != 'x') {
+                    rtnVal = rtnVal.concat(str.substring(i,i+1));
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring.
+    So "xxcaazz" and "xxbaaz" yields 3,
+    since the "xx", "aa", and "az" substrings appear in the same place in both strings.
+    stringMatch("xxcaazz", "xxbaaz") → 3
+    stringMatch("abc", "abc") → 2
+    stringMatch("abc", "axc") → 0
+     */
+    public int stringMatch(String a, String b) {
+        int rtnVal = 0;
+        // read the string having the shortest length.
+        if (a.length() <= b.length()) {
+            // loop through the string, except for the last char.
+            // check the pattern match for every 2 chars between the string.
+            for (int i = 0; i < a.length()-1; i++) {
+                if (a.substring(i,i+2).equals(b.substring(i,i+2))) {
+                    rtnVal++;
+                }
+            }
+        } else {
+            for (int i = 0; i < b.length()-1; i++) {
+                if (b.substring(i,i+2).equals(a.substring(i,i+2))) {
+                    rtnVal++;
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* This is a more efficient variant of stringMatch()
+    This will get the length of the shortest string and use it to limit the loop.
+    This will prevent code duplication.
+     */
+    public int stringMatchV2(String a, String b) {
+        int rtnVal = 0;
+        // get the shortest length between the 2 strings
+        int minLen = Math.min(a.length(), b.length());
+        // loop through the string, except for the last char.
+        // check the pattern match for every 2 chars between the string.
+        for (int i = 0; i < minLen - 1; i++) {
+            if (a.substring(i, i+2).equals(b.substring(i, i+2))) {
+                rtnVal++;
+            }
+        }
+        return rtnVal;
+    }
+
 
     /* Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears in the array somewhere.
     array123([1, 1, 2, 3, 1]) → true
