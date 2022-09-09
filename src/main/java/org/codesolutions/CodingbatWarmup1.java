@@ -1,4 +1,4 @@
-package org.example;
+package org.codesolutions;
 
 public class CodingbatWarmup1 {
     public static void main(String[] args) {
