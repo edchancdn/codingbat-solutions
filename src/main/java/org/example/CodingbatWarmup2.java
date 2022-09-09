@@ -89,16 +89,64 @@ public class CodingbatWarmup2 {
         System.out.println(cb.array667(d3));
         int[] d4 = {6, 7, 2, 6};
         System.out.println(cb.array667(d4));
-        */
+
         int[] e1 = {1, 1, 2, 2, 1};
         System.out.println(cb.noTriples(e1));
         int[] e2 = {1, 1, 2, 2, 2, 1};
         System.out.println(cb.noTriples(e2));
         int[] e3 = {1, 1, 1, 2, 2, 2, 1};
         System.out.println(cb.noTriples(e3));
+        */
+        int[] f6 = {2, 7, -2};
+        System.out.println(cb.has271(f6));
+        int[] f5 = {2, 7, 4};
+        System.out.println(cb.has271(f5));
+        int[] f1 = {1, 2, 7, 1};
+        System.out.println(cb.has271(f1));
+        int[] f2 = {1, 2, 8, 1};
+        System.out.println(cb.has271(f2));
+        int[] f3 = {2, 7, 1};
+        System.out.println(cb.has271(f3));
+        int[] f4 = {2, 7, 3};
+        System.out.println(cb.has271(f4));
 
     }
 
+    /* Given an array of ints, return true if it contains a 2, 7, 1
+    pattern: a value, followed by the value plus 5, followed by the value minus 1.
+    Additionally the 271 counts even if the "1" differs by 2 or less from the correct value.
+    has271([1, 2, 7, 1]) → true
+    has271([1, 2, 8, 1]) → false
+    has271([2, 7, 1]) → true
+     */
+    public boolean has271(int[] nums) {
+        boolean rtnVal = false;
+        for (int i = 0; i < nums.length - 2; i++) {
+            int val3 = nums[i] - 1;
+            // look for pattern: value, value+5, value-1 ( allow +-2 variance on third value)
+            if ((nums[i + 1] == nums[i] + 5) && ((nums[i + 2] >= val3 - 2) && (nums[i + 2] <= val3 + 2))) {
+                rtnVal = true;
+                break;
+            }
+        }
+        return rtnVal;
+    }
+    /* This is a variant of has271() using the absolute value instead of the range condition.
+     */
+    public boolean has271V2(int[] nums) {
+        boolean rtnVal = false;
+        for (int i = 0; i < nums.length - 2; i++) {
+            int val3 = nums[i] - 1;
+            // get absolute diff of 3rd number and sub-pattern3(value-1)
+            int diff3 = Math.abs(nums[i + 2] - val3);
+            // look for pattern: value, value+5, value-1 ( allow +-2 variance on third value)
+            if ((nums[i + 1] == nums[i] + 5) && (diff3 <= 2)) {
+                rtnVal = true;
+                break;
+            }
+        }
+        return rtnVal;
+    }
 
     /* Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array.
     Return true if the array does not contain any triples.
@@ -108,12 +156,10 @@ public class CodingbatWarmup2 {
      */
     public boolean noTriples(int[] nums) {
         boolean rtnVal = true;
-        for (int i = 0; i < nums.length; i++) {
-            if ((i + 2) <= nums.length - 1) {
-                if ((nums[i] == nums[i + 1]) && (nums[i] == nums[i + 2])) {
-                    rtnVal = false;
-                    break;
-                }
+        for (int i = 0; i < nums.length - 2; i++) {
+            if ((nums[i] == nums[i + 1]) && (nums[i] == nums[i + 2])) {
+                rtnVal = false;
+                break;
             }
         }
         return rtnVal;
