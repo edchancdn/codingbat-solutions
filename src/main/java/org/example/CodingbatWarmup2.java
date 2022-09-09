@@ -70,10 +70,95 @@ public class CodingbatWarmup2 {
         System.out.println(cb.stringX("xxHxix"));
         System.out.println(cb.stringX("abxxxcd"));
         System.out.println(cb.stringX("xabxxxcdx"));
-        */
+
         System.out.println(cb.altPairsV2("kitten"));
         System.out.println(cb.altPairsV2("Chocolate"));
         System.out.println(cb.altPairsV2("CodingHorror"));
+
+        System.out.println(cb.stringYak("yakpak"));
+        System.out.println(cb.stringYak("pakyak"));
+        System.out.println(cb.stringYak("yak123ya"));
+        System.out.println(cb.stringYak("HiyakHi"));
+        System.out.println(cb.stringYak("xxxyakyyyakzzz"));
+
+        int[] d1 = {6, 6, 2};
+        System.out.println(cb.array667(d1));
+        int[] d2 = {6, 6, 2, 6};
+        System.out.println(cb.array667(d2));
+        int[] d3 = {6, 7, 2, 6};
+        System.out.println(cb.array667(d3));
+        int[] d4 = {6, 7, 2, 6};
+        System.out.println(cb.array667(d4));
+        */
+        int[] e1 = {1, 1, 2, 2, 1};
+        System.out.println(cb.noTriples(e1));
+        int[] e2 = {1, 1, 2, 2, 2, 1};
+        System.out.println(cb.noTriples(e2));
+        int[] e3 = {1, 1, 1, 2, 2, 2, 1};
+        System.out.println(cb.noTriples(e3));
+
+    }
+
+
+    /* Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array.
+    Return true if the array does not contain any triples.
+    noTriples([1, 1, 2, 2, 1]) → true
+    noTriples([1, 1, 2, 2, 2, 1]) → false
+    noTriples([1, 1, 1, 2, 2, 2, 1]) → false
+     */
+    public boolean noTriples(int[] nums) {
+        boolean rtnVal = true;
+        for (int i = 0; i < nums.length; i++) {
+            if ((i + 2) <= nums.length - 1) {
+                if ((nums[i] == nums[i + 1]) && (nums[i] == nums[i + 2])) {
+                    rtnVal = false;
+                    break;
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given an array of ints, return the number of times that two 6's are next to each other in the array.
+    Also count instances where the second "6" is actually a 7.
+    array667([6, 6, 2]) → 1
+    array667([6, 6, 2, 6]) → 1
+    array667([6, 7, 2, 6]) → 1
+     */
+    public int array667(int[] nums) {
+        int rtnVal = 0;
+        // loop through the array, skip the last element.
+        for (int i = 0; i < nums.length - 1; i++) {
+            if ((nums[i] == 6) && ((nums[i + 1] == 6) || (nums[i + 1] == 7))) {
+                rtnVal++;
+            }
+        }
+        return rtnVal;
+    }
+
+
+    /* Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed,
+    but the "a" can be any char. The "yak" strings will not overlap.
+    stringYak("yakpak") → "pak"
+    stringYak("pakyak") → "pak"
+    stringYak("yak123ya") → "123ya"
+     */
+    public String stringYak(String str) {
+        String rtnVal = "";
+        for (int i = 0; i < str.length(); i++) {
+            int endPos = i + 3;
+            if (endPos > str.length()) {
+                endPos = str.length();
+            }
+            // if "yak" is found, then push loop counter to 3 chars forward
+            // to skip the "yak" chars
+            if (str.substring(i, endPos).equals("yak")) {
+                i += 2;
+            } else {
+                rtnVal = rtnVal.concat(str.substring(i, i + 1));
+            }
+        }
+        return rtnVal;
     }
 
     /* Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
@@ -84,15 +169,15 @@ public class CodingbatWarmup2 {
     public String altPairs(String str) {
         String rtnVal = "";
         // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
-        for (int i=0; i<str.length(); i+=4) {
-            // if string length is an odd number and the loop pointer is at the last char,
+        for (int i = 0; i < str.length(); i += 4) {
+            // if string length is an odd number and the loop counter is at the last char,
             // then just concatenate the last char.
-            if ((str.length() % 2) != 0 && i == str.length()-1) {
-                rtnVal = rtnVal.concat(str.substring(i,i+1));
+            if ((str.length() % 2) != 0 && i == str.length() - 1) {
+                rtnVal = rtnVal.concat(str.substring(i, i + 1));
                 break;
             } else {
                 // otherwise concatenate the 2 chars in current position.
-                rtnVal = rtnVal.concat(str.substring(i,i+2));
+                rtnVal = rtnVal.concat(str.substring(i, i + 2));
             }
         }
         return rtnVal;
@@ -103,14 +188,14 @@ public class CodingbatWarmup2 {
     public String altPairsV2(String str) {
         String rtnVal = "";
         // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
-        for (int i=0; i<str.length(); i+=4) {
+        for (int i = 0; i < str.length(); i += 4) {
             // get end position, if end position is greater than the string length,
             // then set the end position to the string length.
-            int endPos = i+2;
+            int endPos = i + 2;
             if (endPos > str.length()) {
                 endPos = str.length();
             }
-            rtnVal = rtnVal.concat(str.substring(i,endPos));
+            rtnVal = rtnVal.concat(str.substring(i, endPos));
         }
         return rtnVal;
     }
@@ -126,12 +211,12 @@ public class CodingbatWarmup2 {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // concat to return string if start char is 'x' or end char is 'x'.
-            if (((i == 0) || (i == str.length()-1)) && (str.substring(i,i+1).equals("x"))) {
-                rtnVal = rtnVal.concat(str.substring(i,i+1));
+            if (((i == 0) || (i == str.length() - 1)) && (str.substring(i, i + 1).equals("x"))) {
+                rtnVal = rtnVal.concat(str.substring(i, i + 1));
             } else {
                 // skip if char is 'x'.
-                if (!str.substring(i,i+1).equals("x")) {
-                    rtnVal = rtnVal.concat(str.substring(i,i+1));
+                if (!str.substring(i, i + 1).equals("x")) {
+                    rtnVal = rtnVal.concat(str.substring(i, i + 1));
                 }
             }
         }
@@ -144,12 +229,12 @@ public class CodingbatWarmup2 {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // concat to return string if start char is 'x' or end char is 'x'.
-            if (((i == 0) || (i == str.length()-1)) && (str.charAt(i) == 'x')) {
-                rtnVal = rtnVal.concat(str.substring(i,i+1));
+            if (((i == 0) || (i == str.length() - 1)) && (str.charAt(i) == 'x')) {
+                rtnVal = rtnVal.concat(str.substring(i, i + 1));
             } else {
                 // skip if char is 'x'.
                 if (str.charAt(i) != 'x') {
-                    rtnVal = rtnVal.concat(str.substring(i,i+1));
+                    rtnVal = rtnVal.concat(str.substring(i, i + 1));
                 }
             }
         }
@@ -169,14 +254,14 @@ public class CodingbatWarmup2 {
         if (a.length() <= b.length()) {
             // loop through the string, except for the last char.
             // check the pattern match for every 2 chars between the string.
-            for (int i = 0; i < a.length()-1; i++) {
-                if (a.substring(i,i+2).equals(b.substring(i,i+2))) {
+            for (int i = 0; i < a.length() - 1; i++) {
+                if (a.substring(i, i + 2).equals(b.substring(i, i + 2))) {
                     rtnVal++;
                 }
             }
         } else {
-            for (int i = 0; i < b.length()-1; i++) {
-                if (b.substring(i,i+2).equals(a.substring(i,i+2))) {
+            for (int i = 0; i < b.length() - 1; i++) {
+                if (b.substring(i, i + 2).equals(a.substring(i, i + 2))) {
                     rtnVal++;
                 }
             }
@@ -195,7 +280,7 @@ public class CodingbatWarmup2 {
         // loop through the string, except for the last char.
         // check the pattern match for every 2 chars between the string.
         for (int i = 0; i < minLen - 1; i++) {
-            if (a.substring(i, i+2).equals(b.substring(i, i+2))) {
+            if (a.substring(i, i + 2).equals(b.substring(i, i + 2))) {
                 rtnVal++;
             }
         }
