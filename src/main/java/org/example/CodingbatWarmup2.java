@@ -3,112 +3,110 @@ package org.example;
 public class CodingbatWarmup2 {
 
     public static void main(String[] args) {
-        // For exercise purposes only
-        CodingbatWarmup2 cb = new CodingbatWarmup2();
         /*
-        System.out.println(cb.stringTimes("Hi", 2));
-        System.out.println(cb.stringTimes("Hi", 3));
-        System.out.println(cb.stringTimes("Hi", 1));
-        System.out.println(cb.stringTimes("Hi", 0));
+        System.out.println(stringTimes("Hi", 2));
+        System.out.println(stringTimes("Hi", 3));
+        System.out.println(stringTimes("Hi", 1));
+        System.out.println(stringTimes("Hi", 0));
 
-        System.out.println(cb.frontTimes("Chocolate", 2));
-        System.out.println(cb.frontTimes("Chocolate", 3));
-        System.out.println(cb.frontTimes("Abc", 3));
-        System.out.println(cb.frontTimes("Abcde", 0));
+        System.out.println(frontTimes("Chocolate", 2));
+        System.out.println(frontTimes("Chocolate", 3));
+        System.out.println(frontTimes("Abc", 3));
+        System.out.println(frontTimes("Abcde", 0));
 
-        System.out.println(cb.countXX("abcxx"));
-        System.out.println(cb.countXX("xxx"));
-        System.out.println(cb.countXX("xxxx"));
+        System.out.println(countXX("abcxx"));
+        System.out.println(countXX("xxx"));
+        System.out.println(countXX("xxxx"));
 
-        System.out.println(cb.doubleX("axxbb"));
-        System.out.println(cb.doubleX("axaxax"));
-        System.out.println(cb.doubleX("xxxxx"));
+        System.out.println(doubleX("axxbb"));
+        System.out.println(doubleX("axaxax"));
+        System.out.println(doubleX("xxxxx"));
 
-        System.out.println(cb.stringBits("Hello"));
-        System.out.println(cb.stringBits("Hi"));
-        System.out.println(cb.stringBits("Heeololeo"));
+        System.out.println(stringBits("Hello"));
+        System.out.println(stringBits("Hi"));
+        System.out.println(stringBits("Heeololeo"));
 
-        System.out.println(cb.stringSplosion("Code"));
-        System.out.println(cb.stringSplosion("abc"));
-        System.out.println(cb.stringSplosion("ab"));
+        System.out.println(stringSplosion("Code"));
+        System.out.println(stringSplosion("abc"));
+        System.out.println(stringSplosion("ab"));
 
-        System.out.println(cb.last2("hixxhi"));
-        System.out.println(cb.last2("xaxxaxaxx"));
-        System.out.println(cb.last2("axxxaaxx"));
-        System.out.println(cb.last2("xx"));
+        System.out.println(last2("hixxhi"));
+        System.out.println(last2("xaxxaxaxx"));
+        System.out.println(last2("axxxaaxx"));
+        System.out.println(last2("xx"));
 
         int[] ia1 = {1, 2, 9};
-        System.out.println(cb.arrayCount9(ia1));
+        System.out.println(arrayCount9(ia1));
         int[] ia2 = {1, 9, 9};
-        System.out.println(cb.arrayCount9(ia2));
+        System.out.println(arrayCount9(ia2));
         int[] ia3 = {1, 9, 9, 3, 9};
-        System.out.println(cb.arrayCount9(ia3));
+        System.out.println(arrayCount9(ia3));
 
         int[] b1 = {1, 2, 9, 3, 4};
-        System.out.println(cb.arrayFront9(b1));
+        System.out.println(arrayFront9(b1));
         int[] b2 = {1, 2, 3, 4, 9};
-        System.out.println(cb.arrayFront9(b2));
+        System.out.println(arrayFront9(b2));
         int[] b3 = {1, 2, 3, 4, 5};
-        System.out.println(cb.arrayFront9(b3));
+        System.out.println(arrayFront9(b3));
         int[] b4 = {1, 2};
-        System.out.println(cb.arrayFront9(b4));
+        System.out.println(arrayFront9(b4));
         int[] b5 = {1, 9};
-        System.out.println(cb.arrayFront9(b5));
+        System.out.println(arrayFront9(b5));
 
         int[] c1 = {1, 1, 2, 3, 1};
-        System.out.println(cb.array123(c1));
+        System.out.println(array123(c1));
         int[] c2 = {1, 1, 2, 4, 1};
-        System.out.println(cb.array123(c2));
+        System.out.println(array123(c2));
         int[] c3 = {1, 1, 2, 1, 2, 3};
-        System.out.println(cb.array123(c3));
+        System.out.println(array123(c3));
 
-        System.out.println(cb.stringMatchV2("xxcaazz", "xxbaaz"));
-        System.out.println(cb.stringMatchV2("abc", "abc"));
-        System.out.println(cb.stringMatchV2("abc", "axc"));
-        System.out.println(cb.stringMatchV2("xxcaazztfghe", "xxbaaz"));  // test case where string lengths are not same.
+        System.out.println(stringMatchV2("xxcaazz", "xxbaaz"));
+        System.out.println(stringMatchV2("abc", "abc"));
+        System.out.println(stringMatchV2("abc", "axc"));
+        System.out.println(stringMatchV2("xxcaazztfghe", "xxbaaz"));  // test case where string lengths are not same.
 
-        System.out.println(cb.stringX("xxHxix"));
-        System.out.println(cb.stringX("abxxxcd"));
-        System.out.println(cb.stringX("xabxxxcdx"));
+        System.out.println(stringX("xxHxix"));
+        System.out.println(stringX("abxxxcd"));
+        System.out.println(stringX("xabxxxcdx"));
 
-        System.out.println(cb.altPairsV2("kitten"));
-        System.out.println(cb.altPairsV2("Chocolate"));
-        System.out.println(cb.altPairsV2("CodingHorror"));
+        System.out.println(altPairsV2("kitten"));
+        System.out.println(altPairsV2("Chocolate"));
+        System.out.println(altPairsV2("CodingHorror"));
 
-        System.out.println(cb.stringYak("yakpak"));
-        System.out.println(cb.stringYak("pakyak"));
-        System.out.println(cb.stringYak("yak123ya"));
-        System.out.println(cb.stringYak("HiyakHi"));
-        System.out.println(cb.stringYak("xxxyakyyyakzzz"));
+        System.out.println(stringYak("yakpak"));
+        System.out.println(stringYak("pakyak"));
+        System.out.println(stringYak("yak123ya"));
+        System.out.println(stringYak("HiyakHi"));
+        System.out.println(stringYak("xxxyakyyyakzzz"));
 
         int[] d1 = {6, 6, 2};
-        System.out.println(cb.array667(d1));
+        System.out.println(array667(d1));
         int[] d2 = {6, 6, 2, 6};
-        System.out.println(cb.array667(d2));
+        System.out.println(array667(d2));
         int[] d3 = {6, 7, 2, 6};
-        System.out.println(cb.array667(d3));
+        System.out.println(array667(d3));
         int[] d4 = {6, 7, 2, 6};
-        System.out.println(cb.array667(d4));
+        System.out.println(array667(d4));
 
         int[] e1 = {1, 1, 2, 2, 1};
-        System.out.println(cb.noTriples(e1));
+        System.out.println(noTriples(e1));
         int[] e2 = {1, 1, 2, 2, 2, 1};
-        System.out.println(cb.noTriples(e2));
+        System.out.println(noTriples(e2));
         int[] e3 = {1, 1, 1, 2, 2, 2, 1};
-        System.out.println(cb.noTriples(e3));
+        System.out.println(noTriples(e3));
         */
         int[] f6 = {2, 7, -2};
-        System.out.println(cb.has271(f6));
+        System.out.println(has271(f6));
         int[] f5 = {2, 7, 4};
-        System.out.println(cb.has271(f5));
+        System.out.println(has271(f5));
         int[] f1 = {1, 2, 7, 1};
-        System.out.println(cb.has271(f1));
+        System.out.println(has271(f1));
         int[] f2 = {1, 2, 8, 1};
-        System.out.println(cb.has271(f2));
+        System.out.println(has271(f2));
         int[] f3 = {2, 7, 1};
-        System.out.println(cb.has271(f3));
+        System.out.println(has271(f3));
         int[] f4 = {2, 7, 3};
-        System.out.println(cb.has271(f4));
+        System.out.println(has271(f4));
 
     }
 
@@ -119,7 +117,7 @@ public class CodingbatWarmup2 {
     has271([1, 2, 8, 1]) → false
     has271([2, 7, 1]) → true
      */
-    public boolean has271(int[] nums) {
+    public static boolean has271(int[] nums) {
         boolean rtnVal = false;
         for (int i = 0; i < nums.length - 2; i++) {
             int val3 = nums[i] - 1;
@@ -133,7 +131,7 @@ public class CodingbatWarmup2 {
     }
     /* This is a variant of has271() using the absolute value instead of the range condition.
      */
-    public boolean has271V2(int[] nums) {
+    public static boolean has271V2(int[] nums) {
         boolean rtnVal = false;
         for (int i = 0; i < nums.length - 2; i++) {
             int val3 = nums[i] - 1;
@@ -154,7 +152,7 @@ public class CodingbatWarmup2 {
     noTriples([1, 1, 2, 2, 2, 1]) → false
     noTriples([1, 1, 1, 2, 2, 2, 1]) → false
      */
-    public boolean noTriples(int[] nums) {
+    public static boolean noTriples(int[] nums) {
         boolean rtnVal = true;
         for (int i = 0; i < nums.length - 2; i++) {
             if ((nums[i] == nums[i + 1]) && (nums[i] == nums[i + 2])) {
@@ -171,7 +169,7 @@ public class CodingbatWarmup2 {
     array667([6, 6, 2, 6]) → 1
     array667([6, 7, 2, 6]) → 1
      */
-    public int array667(int[] nums) {
+    public static int array667(int[] nums) {
         int rtnVal = 0;
         // loop through the array, skip the last element.
         for (int i = 0; i < nums.length - 1; i++) {
@@ -189,7 +187,7 @@ public class CodingbatWarmup2 {
     stringYak("pakyak") → "pak"
     stringYak("yak123ya") → "123ya"
      */
-    public String stringYak(String str) {
+    public static String stringYak(String str) {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             int endPos = i + 3;
@@ -212,7 +210,7 @@ public class CodingbatWarmup2 {
     altPairs("Chocolate") → "Chole"
     altPairs("CodingHorror") → "Congrr"
      */
-    public String altPairs(String str) {
+    public static String altPairs(String str) {
         String rtnVal = "";
         // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
         for (int i = 0; i < str.length(); i += 4) {
@@ -231,7 +229,7 @@ public class CodingbatWarmup2 {
 
     /* This variant of the altPairs() that uses the string length value as the substring end parameter.
      */
-    public String altPairsV2(String str) {
+    public static String altPairsV2(String str) {
         String rtnVal = "";
         // pattern: include 2 chars every other 2 chars (alternating pairs or chars).
         for (int i = 0; i < str.length(); i += 4) {
@@ -253,7 +251,7 @@ public class CodingbatWarmup2 {
     stringX("abxxxcd") → "abcd"
     stringX("xabxxxcdx") → "xabcdx"
      */
-    public String stringX(String str) {
+    public static String stringX(String str) {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // concat to return string if start char is 'x' or end char is 'x'.
@@ -271,7 +269,7 @@ public class CodingbatWarmup2 {
 
     /* This is a variant of stringX() that uses String.charAt(i) instead of String.substring(i,i+1)
      */
-    public String stringXV2(String str) {
+    public static String stringXV2(String str) {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // concat to return string if start char is 'x' or end char is 'x'.
@@ -294,7 +292,7 @@ public class CodingbatWarmup2 {
     stringMatch("abc", "abc") → 2
     stringMatch("abc", "axc") → 0
      */
-    public int stringMatch(String a, String b) {
+    public static int stringMatch(String a, String b) {
         int rtnVal = 0;
         // read the string having the shortest length.
         if (a.length() <= b.length()) {
@@ -319,7 +317,7 @@ public class CodingbatWarmup2 {
     This will get the length of the shortest string and use it to limit the loop.
     This will prevent code duplication.
      */
-    public int stringMatchV2(String a, String b) {
+    public static int stringMatchV2(String a, String b) {
         int rtnVal = 0;
         // get the shortest length between the 2 strings
         int minLen = Math.min(a.length(), b.length());
@@ -339,7 +337,7 @@ public class CodingbatWarmup2 {
     array123([1, 1, 2, 4, 1]) → false
     array123([1, 1, 2, 1, 2, 3]) → true
      */
-    public boolean array123(int[] nums) {
+    public static boolean array123(int[] nums) {
         boolean rtnVal = false;
         // array must have at least 3 elements
         if (nums.length >= 3) {
@@ -361,7 +359,7 @@ public class CodingbatWarmup2 {
     arrayFront9([1, 2, 3, 4, 9]) → false
     arrayFront9([1, 2, 3, 4, 5]) → false
      */
-    public boolean arrayFront9(int[] nums) {
+    public static boolean arrayFront9(int[] nums) {
         boolean rtnVal = false;
         for (int i = 0; i < nums.length; i++) {
             // leave the loop after the 4th element.
@@ -381,7 +379,7 @@ public class CodingbatWarmup2 {
     arrayCount9([1, 9, 9]) → 2
     arrayCount9([1, 9, 9, 3, 9]) → 3
      */
-    public int arrayCount9(int[] nums) {
+    public static int arrayCount9(int[] nums) {
         int rtnVal = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 9) {
@@ -397,7 +395,7 @@ public class CodingbatWarmup2 {
     last2("xaxxaxaxx") → 1
     last2("axxxaaxx") → 2
      */
-    public int last2(String str) {
+    public static int last2(String str) {
         int rtnVal = 0;
         if (str.length() >= 2) {
             // get the last 2 chars as the pattern to compare with
@@ -418,7 +416,7 @@ public class CodingbatWarmup2 {
     stringSplosion("abc") → "aababc"
     stringSplosion("ab") → "aab"
      */
-    public String stringSplosion(String str) {
+    public static String stringSplosion(String str) {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // start of substring will always be at index 0
@@ -434,7 +432,7 @@ public class CodingbatWarmup2 {
     stringBits("Hi") → "H"
     stringBits("Heeololeo") → "Hello"
      */
-    public String stringBits(String str) {
+    public static String stringBits(String str) {
         String rtnVal = "";
         for (int i = 0; i < str.length(); i++) {
             // keep char if index is even
@@ -450,7 +448,7 @@ public class CodingbatWarmup2 {
     doubleX("axaxax") → false
     doubleX("xxxxx") → true
      */
-    public boolean doubleX(String str) {
+    public static boolean doubleX(String str) {
         boolean rtnVal = false;
         for (int i = 0; i < str.length() - 1; i++) {
             // check if this character is an "x",
@@ -473,7 +471,7 @@ public class CodingbatWarmup2 {
     countXX("xxx") → 2
     countXX("xxxx") → 3
      */
-    public int countXX(String str) {
+    public static int countXX(String str) {
         int count = 0;
         for (int i = 0; i < str.length() - 1; i++) {
             if (str.substring(i, i + 2).equals("xx")) {
@@ -490,7 +488,7 @@ public class CodingbatWarmup2 {
     frontTimes("Chocolate", 3) → "ChoChoCho"
     frontTimes("Abc", 3) → "AbcAbcAbc"
      */
-    public String frontTimes(String str, int n) {
+    public static String frontTimes(String str, int n) {
         String rtnVal = "";
         String front = "";
         if (str.length() >= 3) {
@@ -511,7 +509,7 @@ public class CodingbatWarmup2 {
     stringTimes("Hi", 1) → "Hi"
     stringTimes("Hi", 0) → ""
      */
-    public String stringTimes(String str, int n) {
+    public static String stringTimes(String str, int n) {
         String rtnVal = "";
         for (int i = 0; i < n; i++) {
             rtnVal = rtnVal.concat(str);
