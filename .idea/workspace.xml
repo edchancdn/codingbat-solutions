@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc621245-ed80-49a6-b535-4ae4d4ad744f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/codesolutions/CodingbatString1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CodingbatWarmup1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/codesolutions/CodingbatWarmup1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CodingbatWarmup2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/codesolutions/CodingbatWarmup2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/codesolutions/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/codesolutions/CodingbatString1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/codesolutions/CodingbatString1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,20 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.org.codesolutions.CodingbatWarmup2">
+  <component name="RunManager" selected="Application.CodingbatString1">
+    <configuration name="CodingbatString1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.codesolutions.CodingbatString1" />
+      <module name="codingbat-solutions" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.codesolutions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CodingbatWarmup1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.codesolutions.CodingbatWarmup1" />
       <module name="codingbat-solutions" />
@@ -74,6 +85,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CodingbatString1" />
         <item itemvalue="Application.org.codesolutions.CodingbatWarmup2" />
         <item itemvalue="Application.org.codesolutions.CodingbatWarmup1" />
       </list>
@@ -96,7 +108,7 @@
       <workItem from="1662582962416" duration="2213000" />
       <workItem from="1662608445706" duration="27000" />
       <workItem from="1662641392367" duration="16028000" />
-      <workItem from="1662730653086" duration="6601000" />
+      <workItem from="1662730653086" duration="8874000" />
     </task>
     <servers />
   </component>
