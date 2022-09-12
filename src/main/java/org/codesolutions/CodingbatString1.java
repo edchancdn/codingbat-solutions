@@ -4,7 +4,8 @@ public class CodingbatString1 {
 
     public static void main(String[] args) {
 
-        /*
+        /* Basic string problems -- no loops.
+
         System.out.println(helloName("Bob"));
         System.out.println(helloName("Alice"));
         System.out.println(helloName("X"));
@@ -31,12 +32,136 @@ public class CodingbatString1 {
         System.out.println(firstHalf("WooHoo"));
         System.out.println(firstHalf("HelloThere"));
         System.out.println(firstHalf("abcdef"));
-        */
+
         System.out.println(withoutEnd("Hello"));
         System.out.println(withoutEnd("java"));
         System.out.println(withoutEnd("coding"));
+
+        System.out.println(comboString("Hello", "hi"));
+        System.out.println(comboString("hi", "Hello"));
+        System.out.println(comboString("aaa", "b"));
+
+        System.out.println(nonStart("Hello", "There"));
+        System.out.println(nonStart("java", "code"));
+        System.out.println(nonStart("shot1", "java"));
+
+        System.out.println(left2("Hello"));
+        System.out.println(left2("java"));
+        System.out.println(left2("Hi"));
+
+        System.out.println(right2("Hello"));
+        System.out.println(right2("java"));
+        System.out.println(right2("Hi"));
+
+        System.out.println(theEnd("Hello", true));
+        System.out.println(theEnd("Hello", false));
+        System.out.println(theEnd("oh", true));
+        System.out.println(theEnd("h", true));
+
+        System.out.println(withouEnd2("Hello"));
+        System.out.println(withouEnd2("abc"));
+        System.out.println(withouEnd2("ab"));
+        */
+        System.out.println(middleTwo("string"));
+        System.out.println(middleTwo("code"));
+        System.out.println(middleTwo("Practice"));
     }
 
+    /* Given a string of even length, return a string made of the middle two chars,
+    so the string "string" yields "ri".
+    The string length will be at least 2.
+    middleTwo("string") → "ri"
+    middleTwo("code") → "od"
+    middleTwo("Practice") → "ct"
+    */
+    public static String middleTwo(String str) {
+        return str.substring((str.length() / 2) - 1, (str.length() / 2) + 1);
+    }
+
+    /* Given a string, return a version without both the first and last char of the string.
+    The string may be any length, including 0.
+    withouEnd2("Hello") → "ell"
+    withouEnd2("abc") → "b"
+    withouEnd2("ab") → ""
+     */
+    public static String withouEnd2(String str) {
+        if (str.length() >= 3) {
+            return str.substring(1, str.length() - 1);
+        } else {
+            return "";
+        }
+    }
+
+    /* Given a string, return a string length 1 from its front, unless front is false,
+    in which case return a string length 1 from its back.
+    The string will be non-empty.
+    theEnd("Hello", true) → "H"
+    theEnd("Hello", false) → "o"
+    theEnd("oh", true) → "o"
+     */
+    public static String theEnd(String str, boolean front) {
+        if (str.length() >= 1) {
+            if (front) {
+                return str.substring(0, 1);
+            } else {
+                return str.substring(str.length() - 1);
+            }
+        } else {
+            return str;
+        }
+    }
+
+    /*Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start.
+    The string length will be at least 2.
+    right2("Hello") → "loHel"
+    right2("java") → "vaja"
+    right2("Hi") → "Hi"
+     */
+    public static String right2(String str) {
+        if (str.length() >= 2) {
+            return str.substring(str.length()-2) + str.substring(0, str.length()-2);
+        } else {
+            return str;
+        }
+    }
+
+    /* Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end.
+    The string length will be at least 2.
+    left2("Hello") → "lloHe"
+    left2("java") → "vaja"
+    left2("Hi") → "Hi" */
+    public static String left2(String str) {
+        if (str.length() >= 2) {
+            return str.substring(2) + str.substring(0, 2);
+        } else {
+            return str;
+        }
+    }
+
+    /* Given 2 strings, return their concatenation, except omit the first char of each.
+    The strings will be at least length 1.
+    nonStart("Hello", "There") → "ellohere"
+    nonStart("java", "code") → "avaode"
+    nonStart("shotl", "java") → "hotlava"
+     */
+    public static String nonStart(String a, String b) {
+        return a.substring(1) + b.substring(1);
+    }
+
+    /* Given 2 strings, a and b, return a string of the form short+long+short,
+    with the shorter string on the outside and the longer string on the inside.
+    The strings will not be the same length, but they may be empty (length 0).
+    comboString("Hello", "hi") → "hiHellohi"
+    comboString("hi", "Hello") → "hiHellohi"
+    comboString("aaa", "b") → "baaab"
+     */
+    public static String comboString(String a, String b) {
+        if (a.length() > b.length()) {
+            return b + a + b;
+        } else {
+            return a + b + a;
+        }
+    }
 
 
     /* Given a string, return a version without the first and last char,
@@ -86,17 +211,6 @@ public class CodingbatString1 {
     extraEnd("Hi") → "HiHiHi"
      */
     public static String extraEnd(String str) {
-        String rtnVal = "";
-        if (str.length() >= 2) {
-            for (int i = 0; i < 3; i++) {
-                rtnVal = rtnVal.concat(str.substring(str.length() - 2));
-            }
-        }
-        return rtnVal;
-    }
-    /* This variant stores the last 2 chars in a variable and uses no loop, just simple concat.
-     */
-    public static String extraEndV2(String str) {
         String rtnVal = "";
         if (str.length() >= 2) {
             String last2 = str.substring(str.length() - 2);
