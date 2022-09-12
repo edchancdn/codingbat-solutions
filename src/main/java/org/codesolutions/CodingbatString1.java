@@ -69,10 +69,178 @@ public class CodingbatString1 {
         System.out.println(endsLy("oddly"));
         System.out.println(endsLy("y"));
         System.out.println(endsLy("oddy"));
-        */
+
         System.out.println(nTwice("Hello", 2));
         System.out.println(nTwice("Chocolate", 3));
         System.out.println(nTwice("Chocolate", 1));
+
+        System.out.println(twoChar("java", 0));
+        System.out.println(twoChar("java", 2));
+        System.out.println(twoChar("java", 3));
+        System.out.println(twoChar("java", -1));
+
+        System.out.println(middleThree("Candy"));
+        System.out.println(middleThree("and"));
+        System.out.println(middleThree("solving"));
+
+        System.out.println(hasBad("badxx"));
+        System.out.println(hasBad("xbadxx"));
+        System.out.println(hasBad("xxbadxx"));
+
+        System.out.println(atFirst("hello"));
+        System.out.println(atFirst("hi"));
+        System.out.println(atFirst("h"));
+        System.out.println(atFirst(""));
+
+        System.out.println(lastChars("last", "chars"));
+        System.out.println(lastChars("yo", "java"));
+        System.out.println(lastChars("hi", ""));
+        */
+        System.out.println(conCat("abc", "cat"));
+        System.out.println(conCat("dog", "cat"));
+        System.out.println(conCat("abc", ""));
+        System.out.println(conCat("pig", "doggy"));
+    }
+
+
+    /* Given two strings, append them together (known as "concatenation") and return the result.
+    However, if the concatenation creates a double-char, then omit one of the chars,
+    so "abc" and "cat" yields "abcat".
+    conCat("abc", "cat") → "abcat"
+    conCat("dog", "cat") → "dogcat"
+    conCat("abc", "") → "abc"
+    conCat("pig", "doggy") → "pigdoggy"
+     */
+    public static String conCat(String a, String b) {
+        String lastA = "";
+        String firstB = "";
+        String remB = "";
+        if (a.length() > 0) {
+            // get the last char of string A
+            lastA = a.substring(a.length() - 1);
+        } else {
+            // return string B if string A is empty
+            return b;
+        }
+        if (b.length() > 0) {
+            // get the first char of string B
+            firstB = b.substring(0, 1);
+            // get the remaining chars of string B
+            remB = b.substring(1);
+        } else {
+            // return string A if string B is empty
+            return a;
+        }
+        // return string A concatenated with remaining chars in string B (first char dropped).
+        if (lastA.equals(firstB)) {
+            return a + remB;
+        } else {
+            // otherwise, return the concatenation of both strings.
+            return a + b;
+        }
+    }
+
+    /* Given 2 strings, a and b, return a new string made of the first char of a and the last char of b,
+    so "yo" and "java" yields "ya".
+    If either string is length 0, use '@' for its missing char.
+    lastChars("last", "chars") → "ls"
+    lastChars("yo", "java") → "ya"
+    lastChars("hi", "") → "h@"
+     */
+    public static String lastChars(String a, String b) {
+        String aChr = "@";
+        String bChr = "@";
+        if (a.length() > 0) {
+            aChr = a.substring(0, 1);
+        }
+        if (b.length() > 0) {
+            bChr = b.substring(b.length() - 1, b.length());
+        }
+        return aChr + bChr;
+    }
+
+    /* Given a string, return a string length 2 made of its first 2 chars.
+    If the string length is less than 2, use '@' for the missing chars.
+    atFirst("hello") → "he"
+    atFirst("hi") → "hi"
+    atFirst("h") → "h@"
+     */
+    public static String atFirst(String str) {
+        String rtnVal = "@@";
+        if (str.length() >= 2) {
+            rtnVal = str.substring(0, 2);
+        } else if (str.length() == 1) {
+            rtnVal = str + "@";
+        }
+        return rtnVal;
+    }
+
+
+    /* Given a string, return true if "bad" appears starting at index 0 or 1 in the string,
+    such as with "badxxx" or "xbadxx" but not "xxbadxx".
+    The string may be any length, including 0.
+    Note: use .equals() to compare 2 strings.
+    hasBad("badxx") → true
+    hasBad("xbadxx") → true
+    hasBad("xxbadxx") → false
+     */
+    public static boolean hasBad(String str) {
+        boolean hasBad = false;
+        if (str.length() == 3 && str.equals("bad")) {
+            hasBad = true;
+        } else if (str.length() > 3 &&
+                (str.substring(0, 3).toLowerCase().equals("bad") || str.substring(1, 4).toLowerCase().equals("bad"))) {
+            hasBad = true;
+        }
+        return hasBad;
+    }
+    /* This is a variant of hasBad.
+     */
+    public static boolean hasBadV2(String str) {
+        if (str.length() >= 3 && str.substring(0, 3).equals("bad")) {
+            return true;
+        }
+        if (str.length() >= 4 && str.substring(1, 4).equals("bad")) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /* Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and".
+    The string length will be at least 3.
+    middleThree("Candy") → "and"
+    middleThree("and") → "and"
+    middleThree("solving") → "lvi"
+     */
+    public static String middleThree(String str) {
+        if (str.length() >= 3) {
+            // get the start position
+            int strpos = (str.length() / 2) - 1;
+            // get the end position
+            int endpos = (str.length() / 2) + 2;
+            return str.substring(strpos, endpos);
+        } else {
+            return "";
+        }
+    }
+
+    /* Given a string and an index, return a string length 2 starting at the given index.
+    If the index is too big or too small to define a string length 2, use the first 2 chars.
+    The string length will be at least 2.
+    twoChar("java", 0) → "ja"
+    twoChar("java", 2) → "va"
+    twoChar("java", 3) → "ja"
+     */
+    public static String twoChar(String str, int index) {
+        // string must have a length of at least 2
+        // and the substring end position must be less than or equal to the string length
+        // and index cannot be a negative number
+        if (str.length() > 2 && index + 2 <= str.length() && index > 0) {
+            return str.substring(index, index + 2);
+        } else {
+            return str.substring(0, 2);
+        }
     }
 
     /* Given a string and an int n, return a string made of the first and last n chars from the string.
@@ -82,11 +250,11 @@ public class CodingbatString1 {
     nTwice("Chocolate", 1) → "Ce"
      */
     public static String nTwice(String str, int n) {
-        String rtnVal = "str";
         if (str.length() >= n) {
-            rtnVal = str.substring(0,  n) + str.substring(str.length() - n);
+            return str.substring(0,  n) + str.substring(str.length() - n);
+        } else {
+            return str;
         }
-        return rtnVal;
     }
 
     /* Given a string, return true if it ends in "ly".
@@ -247,12 +415,12 @@ public class CodingbatString1 {
     extraEnd("Hi") → "HiHiHi"
      */
     public static String extraEnd(String str) {
-        String rtnVal = "";
         if (str.length() >= 2) {
             String last2 = str.substring(str.length() - 2);
-            rtnVal = last2 + last2 + last2;
+            return last2 + last2 + last2;
+        } else {
+            return "";
         }
-        return rtnVal;
     }
 
     /* Given an "out" string length 4, such as "<<>>", and a word,
@@ -294,15 +462,7 @@ public class CodingbatString1 {
     helloName("X") → "Hello X!"
      */
     public static String helloName(String name) {
-        String rtnVal = "Hello ";
-        rtnVal = rtnVal.concat(name).concat("!");
-        return rtnVal;
+        return "Hello" + name + "!";
     }
-    /* This is a variant of helloName() without the usage of variables and String.concat
-     */
-    public static String helloNameV2(String name) {
-        return "Hello " + name + "!";
-    }
-
 
 }
