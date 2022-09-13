@@ -121,10 +121,131 @@ public class CodingbatString1 {
         System.out.println(extraFront("Hello"));
         System.out.println(extraFront("ab"));
         System.out.println(extraFront("H"))
-        */
+
         System.out.println(without2("HelloHe"));
         System.out.println(without2("HelloHi"));
         System.out.println(without2("Hi"));
+
+        System.out.println(deFront("Hello"));
+        System.out.println(deFront("java"));
+        System.out.println(deFront("away"));
+
+        System.out.println(startWord("hippo", "hi"));
+        System.out.println(startWord("hippo", "xip"));
+        System.out.println(startWord("hippo", "i"));
+
+        System.out.println(withoutX("xHix"));
+        System.out.println(withoutX("xHi"));
+        System.out.println(withoutX("Hxix"));
+        System.out.println(withoutX("xx"));
+        System.out.println(withoutX("x"));
+        System.out.println(withoutX(""));
+        */
+        System.out.println(withoutX2("xHi"));
+        System.out.println(withoutX2("Hxi"));
+        System.out.println(withoutX2("Hi"));
+    }
+
+    /* Given a string, if one or both of the first 2 chars is 'x',
+    return the string without those 'x' chars,
+    and otherwise return the string unchanged.
+    This is a little harder than it looks.
+    withoutX2("xHi") → "Hi"
+    withoutX2("Hxi") → "Hi"
+    withoutX2("Hi") → "Hi"
+     */
+    public static String withoutX2(String str) {
+        String rtnVal = str;
+        if (str.length() >= 2) {
+            if (str.substring(1, 2).equals("x")) {
+                rtnVal = str.substring(0, 1) + str.substring(2);
+            }
+        }
+        if (rtnVal.length() >= 1) {
+            if (rtnVal.substring(0, 1).equals("x")) {
+                if (rtnVal.length() > 1) {
+                    rtnVal = rtnVal.substring(1);
+                } else {
+                    rtnVal = "";
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given a string, if the first or last chars are 'x',
+    return the string without those 'x' chars,
+    and otherwise return the string unchanged.
+    withoutX("xHix") → "Hi"
+    withoutX("xHi") → "Hi"
+    withoutX("Hxix") → "Hxi"
+     */
+    public static String withoutX(String str) {
+        String rtnVal = str;
+        if (str.length() > 0) {
+            if (str.substring(0, 1).equals("x")) {
+                if (str.length() > 1) {
+                    rtnVal = str.substring(1);
+                } else {
+                    rtnVal = "";
+                }
+            }
+            if (rtnVal.length() > 0) {
+                if (rtnVal.substring(rtnVal.length() - 1).equals("x")) {
+                    rtnVal = rtnVal.substring(0, rtnVal.length() - 1);
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given a string and a second "word" string,
+    we'll say that the word matches the string if it appears at the front of the string,
+    except its first char does not need to match exactly. On a match, return the front of the string,
+    or otherwise return the empty string.
+    So, so with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip".
+    The word will be at least length 1.
+    startWord("hippo", "hi") → "hi"
+    startWord("hippo", "xip") → "hip"
+    startWord("hippo", "i") → "h"
+     */
+    public static String startWord(String str, String word) {
+        String rtnVal = "";
+        if (str.length() >= 1 && str.length() >= word.length()) {
+            if (word.length() > 1) {
+                if (str.substring(1, word.length()).equals(word.substring(1, word.length()))) {
+                    rtnVal = str.substring(0, word.length());
+                }
+            } else if(word.length() == 1) {
+                rtnVal = str.substring(0, 1);
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given a string, return a version without the first 2 chars.
+    Except keep the first char if it is 'a' and keep the second char if it is 'b'.
+    The string may be any length. Harder than it looks.
+    deFront("Hello") → "llo"
+    deFront("java") → "va"
+    deFront("away") → "aay"
+     */
+    public static String deFront(String str) {
+        String rtnVal = "";
+        if (str.length() >= 1) {
+            if (str.substring(0, 1).equals("a")) {
+                rtnVal = str.substring(0, 1);
+            }
+            if (str.length() >= 2) {
+                if (str.substring(1, 2).equals("b")) {
+                    rtnVal = rtnVal + str.substring(1, 2);
+                }
+                if (str.length() > 2) {
+                    rtnVal = rtnVal + str.substring(2);
+                }
+            }
+        }
+        return rtnVal;
     }
 
     /* Given a string, if a length 2 substring appears at both its beginning and end,
