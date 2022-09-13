@@ -95,13 +95,153 @@ public class CodingbatString1 {
         System.out.println(lastChars("last", "chars"));
         System.out.println(lastChars("yo", "java"));
         System.out.println(lastChars("hi", ""));
-        */
+
         System.out.println(conCat("abc", "cat"));
         System.out.println(conCat("dog", "cat"));
         System.out.println(conCat("abc", ""));
         System.out.println(conCat("pig", "doggy"));
+
+        System.out.println(lastTwo("coding"));
+        System.out.println(lastTwo("cat"));
+        System.out.println(lastTwo("ab"));
+        System.out.println(lastTwo("a"));
+
+        System.out.println(seeColor("redxx"));
+        System.out.println(seeColor("xxred"));
+        System.out.println(seeColor("blueTimes"));
+
+        System.out.println(frontAgain("edited"));
+        System.out.println(frontAgain("edit"));
+        System.out.println(frontAgain("ed"));
+
+        System.out.println(minCat("Hello", "Hi"));
+        System.out.println(minCat("Hello", "java"));
+        System.out.println(minCat("java", "Hello"));
+
+        System.out.println(extraFront("Hello"));
+        System.out.println(extraFront("ab"));
+        System.out.println(extraFront("H"))
+        */
+        System.out.println(without2("HelloHe"));
+        System.out.println(without2("HelloHi"));
+        System.out.println(without2("Hi"));
     }
 
+    /* Given a string, if a length 2 substring appears at both its beginning and end,
+    return a string without the substring at the beginning, so "HelloHe" yields "lloHe".
+    The substring may overlap with itself,
+    so "Hi" yields "".
+    Otherwise, return the original string unchanged.
+    without2("HelloHe") → "lloHe"
+    without2("HelloHi") → "HelloHi"
+    without2("Hi") → ""
+     */
+    public static String without2(String str) {
+        if (str.length() > 2) {
+            if (str.substring(0, 2).equals(str.substring(str.length() - 2))) {
+                return str.substring(2);
+            } else {
+                return str;
+            }
+        } else if (str.length() == 2) {
+            return "";
+        } else {
+            return str;
+        }
+    }
+
+    /* Given a string, return a new string made of 3 copies of the first 2 chars of the original string.
+    The string may be any length.
+    If there are fewer than 2 chars, use whatever is there.
+    extraFront("Hello") → "HeHeHe"
+    extraFront("ab") → "ababab"
+    extraFront("H") → "HHH"
+     */
+    public static String extraFront(String str) {
+        if (str.length() >= 2) {
+            String first2 = str.substring(0, 2);
+            return first2 + first2 + first2;
+        } else if (str.length() == 1) {
+            return str + str + str;
+        } else {
+            return str;
+        }
+    }
+
+    /* Given two strings, append them together (known as "concatenation") and return the result.
+    However, if the strings are different lengths, omit chars from the longer string,
+    so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi".
+    The strings may be any length.
+    minCat("Hello", "Hi") → "loHi"
+    minCat("Hello", "java") → "ellojava"
+    minCat("java", "Hello") → "javaello"
+     */
+    public static String minCat(String a, String b) {
+        String rtnVal = "";
+        if (a.length() < b.length()) {
+            return a + b.substring(b.length() - a.length());
+        } else {
+            return a.substring(a.length() - b.length()) + b;
+        }
+    }
+
+    /* Given a string, return true if the first 2 chars in the string also appear at the end of the string,
+    such as with "edited".
+    frontAgain("edited") → true
+    frontAgain("edit") → false
+    frontAgain("ed") → true
+     */
+    public static boolean frontAgain(String str) {
+        boolean rtnVal = false;
+        if (str.length() >= 2) {
+            if (str.substring(0, 2).equals(str.substring(str.length() - 2))) {
+                return true;
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given a string, if the string begins with "red" or "blue" return that color string,
+    otherwise return the empty string.
+    seeColor("redxx") → "red"
+    seeColor("xxred") → ""
+    seeColor("blueTimes") → "blue"
+     */
+    public static String seeColor(String str) {
+        String rtnVal = "";
+        if (str.length() >= 3) {
+            if (str.substring(0, 3).equals("red")) {
+                return "red";
+            }
+        }
+        if (str.length() >= 4) {
+            if (str.substring(0, 4).equals("blue")) {
+                return "blue";
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given a string of any length, return a new string where the last 2 chars, if present, are swapped,
+    so "coding" yields "codign".
+    lastTwo("coding") → "codign"
+    lastTwo("cat") → "cta"
+    lastTwo("ab") → "ba"
+     */
+    public static String lastTwo(String str) {
+        if (str.length() >= 2) {
+            String swapped2 = str.substring(str.length() - 1) +
+                    str.substring(str.length() - 2, str.length() - 1);
+            String rtnVal = "";
+            int sLen = str.length() - 2;
+            if (sLen > 0) {
+                rtnVal = str.substring(0, sLen);
+            }
+            return rtnVal + swapped2;
+        } else {
+            return str;
+        }
+    }
 
     /* Given two strings, append them together (known as "concatenation") and return the result.
     However, if the concatenation creates a double-char, then omit one of the chars,
@@ -194,6 +334,7 @@ public class CodingbatString1 {
         }
         return hasBad;
     }
+
     /* This is a variant of hasBad.
      */
     public static boolean hasBadV2(String str) {
@@ -251,7 +392,7 @@ public class CodingbatString1 {
      */
     public static String nTwice(String str, int n) {
         if (str.length() >= n) {
-            return str.substring(0,  n) + str.substring(str.length() - n);
+            return str.substring(0, n) + str.substring(str.length() - n);
         } else {
             return str;
         }
@@ -323,7 +464,7 @@ public class CodingbatString1 {
      */
     public static String right2(String str) {
         if (str.length() >= 2) {
-            return str.substring(str.length()-2) + str.substring(0, str.length()-2);
+            return str.substring(str.length() - 2) + str.substring(0, str.length() - 2);
         } else {
             return str;
         }
