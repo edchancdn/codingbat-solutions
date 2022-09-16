@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class CodingbatArray1 {
     public static void main(String[] args) {
-        /* Basic array problems -- no loops..
+        /* Basic array problems -- NO LOOPS..
         Use a[0], a[1], ...
         to access elements in an array,
         a.length is the length (note that s.length() is for Strings).
@@ -31,11 +31,130 @@ public class CodingbatArray1 {
         System.out.println(Arrays.toString(rotateLeft3(new int[] {1, 2, 3})));
         System.out.println(Arrays.toString(rotateLeft3(new int[] {5, 11, 9})));
         System.out.println(Arrays.toString(rotateLeft3(new int[] {7, 0, 0})));
-        */
+
         System.out.println(Arrays.toString(reverse3(new int[] {1, 2, 3})));
         System.out.println(Arrays.toString(reverse3(new int[] {5, 11, 9})));
         System.out.println(Arrays.toString(reverse3(new int[] {7, 0, 0})));
+
+        System.out.println(Arrays.toString(maxEnd3(new int[] {1, 2, 3})));
+        System.out.println(Arrays.toString(maxEnd3(new int[] {11, 5, 9})));
+        System.out.println(Arrays.toString(maxEnd3(new int[] {2, 11, 3})));
+
+        System.out.println(sum2(new int[] {1, 2, 3}));
+        System.out.println(sum2(new int[] {1, 1}));
+        System.out.println(sum2(new int[] {1, 1, 1, 1}));
+        System.out.println(sum2(new int[] {2}));
+        System.out.println(sum2(new int[] {}));
+
+        System.out.println(Arrays.toString(middleWay(new int[] {1, 2, 3}, new int[] {4, 5, 6})));
+        System.out.println(Arrays.toString(middleWay(new int[] {7, 7, 7}, new int[] {3, 8, 0})));
+        System.out.println(Arrays.toString(middleWay(new int[] {5, 2, 9}, new int[] {1, 4, 5})));
+
+        System.out.println(Arrays.toString(makeEnds(new int[] {1, 2, 3})));
+        System.out.println(Arrays.toString(makeEnds(new int[] {1, 2, 3, 4})));
+        System.out.println(Arrays.toString(makeEnds(new int[] {7, 4, 6, 2})));
+        System.out.println(Arrays.toString(makeEnds(new int[] {5})));
+
+        System.out.println(has23(new int[] {2, 5}));
+        System.out.println(has23(new int[] {4, 3}));
+        System.out.println(has23(new int[] {4, 5}));
+        */
+        System.out.println(no23(new int[] {4, 5}));
+        System.out.println(no23(new int[] {4, 2}));
+        System.out.println(no23(new int[] {3, 5}));
     }
+
+    /* Given an int array length 2, return true if it does not contain a 2 or 3.
+    no23([4, 5]) → true
+    no23([4, 2]) → false
+    no23([3, 5]) → false */
+    public static boolean no23(int[] nums) {
+        boolean rtnVal = false;
+        if (nums[0] != 2 && nums[0] != 3 && nums[1] != 2 && nums[1] != 3) {
+            return true;
+        }
+        return rtnVal;
+    }
+
+    /* Given an int array length 2, return true if it contains a 2 or a 3.
+    has23([2, 5]) → true
+    has23([4, 3]) → true
+    has23([4, 5]) → false */
+    public static boolean has23(int[] nums) {
+        boolean rtnVal = false;
+        if (nums[0] == 2 || nums[0] == 3 || nums[1] == 2 || nums[1] == 3) {
+            return true;
+        }
+        return rtnVal;
+    }
+
+    /* Given an array of ints,
+    return a new array length 2 containing the first and last elements from the original array.
+    The original array will be length 1 or more.
+    makeEnds([1, 2, 3]) → [1, 3]
+    makeEnds([1, 2, 3, 4]) → [1, 4]
+    makeEnds([7, 4, 6, 2]) → [7, 2]
+    */
+    public static int[] makeEnds(int[] nums) {
+        int[] arr = new int[2];
+        if (nums.length >= 1) {
+            arr[0] = nums[0];
+            arr[1] = nums[nums.length - 1];
+        }
+        return arr;
+    }
+
+    /* Given 2 int arrays, a and b, each length 3,
+    return a new array length 2 containing their middle elements.
+    middleWay([1, 2, 3], [4, 5, 6]) → [2, 5]
+    middleWay([7, 7, 7], [3, 8, 0]) → [7, 8]
+    middleWay([5, 2, 9], [1, 4, 5]) → [2, 4]
+    */
+    public static int[] middleWay(int[] a, int[] b) {
+        int[] arr = new int[2];
+        arr[0] = a[1];
+        arr[1] = b[1];
+        return arr;
+    }
+
+    /* Given an array of ints, return the sum of the first 2 elements in the array.
+    If the array length is less than 2, just sum up the elements that exist,
+    returning 0 if the array is length 0.
+    sum2([1, 2, 3]) → 3
+    sum2([1, 1]) → 2
+    sum2([1, 1, 1, 1]) → 2
+    */
+    public static int sum2(int[] nums) {
+        int rtnVal = 0;
+        if (nums.length >= 2) {
+            rtnVal = nums[0] + nums[1];
+        } else if (nums.length == 1) {
+            rtnVal = nums[0];
+        }
+        return rtnVal;
+    }
+
+    /* Given an array of ints length 3, figure out which is larger, the first or last element in the array,
+    and set all the other elements to be that value.
+    Return the changed array.
+    maxEnd3([1, 2, 3]) → [3, 3, 3]
+    maxEnd3([11, 5, 9]) → [11, 11, 11]
+    maxEnd3([2, 11, 3]) → [3, 3, 3]
+    */
+    public static int[] maxEnd3(int[] nums) {
+        int[] arr = new int[3];
+        int hiNum = 0;
+        if (nums[0] > nums[nums.length - 1]) {
+            hiNum = nums[0];
+        } else {
+            hiNum = nums[nums.length - 1];
+        }
+        arr[0] = hiNum;
+        arr[1] = hiNum;
+        arr[2] = hiNum;
+        return arr;
+    }
+
     /* Given an array of ints length 3, return a new array with the elements in reverse order,
     so {1, 2, 3} becomes {3, 2, 1}.
     reverse3([1, 2, 3]) → [3, 2, 1]
