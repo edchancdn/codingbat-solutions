@@ -109,10 +109,160 @@ public class CodingbatArray1 {
         System.out.println(Arrays.toString(plusTwo(new int[] {1, 2}, new int[] {3, 4})));
         System.out.println(Arrays.toString(plusTwo(new int[] {4, 4}, new int[] {2, 2})));
         System.out.println(Arrays.toString(plusTwo(new int[] {9, 2}, new int[] {3, 4})));
-        */
+
         System.out.println(Arrays.toString(midThree(new int[] {1, 2, 3, 4, 5})));
         System.out.println(Arrays.toString(midThree(new int[] {8, 6, 7, 5, 3, 0, 9})));
         System.out.println(Arrays.toString(midThree(new int[] {1, 2, 3})));
+
+        System.out.println(maxTriple(new int[] {1, 2, 3}));
+        System.out.println(maxTriple(new int[] {1, 5, 3}));
+        System.out.println(maxTriple(new int[] {5, 2, 3}));
+
+        System.out.println(Arrays.toString(frontPiece(new int[]{1, 2, 3})));
+        System.out.println(Arrays.toString(frontPiece(new int[]{1, 2})));
+        System.out.println(Arrays.toString(frontPiece(new int[]{1})));
+        System.out.println(Arrays.toString(frontPiece(new int[]{})));
+
+        System.out.println(unlucky1(new int[] {1, 1, 1, 3, 1}));
+        System.out.println(unlucky1(new int[] {1, 3, 4, 5}));
+        System.out.println(unlucky1(new int[] {2, 1, 3}));
+        System.out.println(unlucky1(new int[] {2, 1, 3, 4, 5}));
+        System.out.println(unlucky1(new int[] {1, 1, 1}));
+
+        System.out.println(Arrays.toString(make2(new int[] {4, 5}, new int[] {1, 2, 3})));
+        System.out.println(Arrays.toString(make2(new int[] {4}, new int[] {1, 2, 3})));
+        System.out.println(Arrays.toString(make2(new int[] {}, new int[] {1, 2})));
+        */
+        System.out.println(Arrays.toString(front11(new int[] {1, 2, 3}, new int[] {7, 8, 9})));
+        System.out.println(Arrays.toString(front11(new int[] {1}, new int[] {2})));
+        System.out.println(Arrays.toString(front11(new int[] {1, 7}, new int[] {})));
+    }
+
+
+    /* Given 2 int arrays, a and b, of any length, return a new array with the first element of each array.
+    If either array is length 0, ignore that array.
+    front11([1, 2, 3], [7, 9, 8]) → [1, 7]
+    front11([1], [2]) → [1, 2]
+    front11([1, 7], []) → [1]
+    */
+    public static int[] front11(int[] a, int[] b) {
+        if (a.length >= 1) {
+            if (b.length >= 1) {
+                int[] arr = new int[2];
+                arr[0] = a[0];
+                arr[1] = b[0];
+                return arr;
+            } else {
+                // b length is 0
+                int[] arr = new int[1];
+                arr[0] = a[0];
+                return arr;
+            }
+        } else {
+            if (b.length >= 1) {
+                int[] arr = new int[1];
+                arr[0] = b[0];
+                return arr;
+            } else {
+                // a & b length is 0
+                int[] arr = new int[0];
+                return arr;
+            }
+
+        }
+    }
+
+    /* Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit,
+    the elements from a followed by the elements from b. The arrays may be any length, including 0,
+    but there will be 2 or more elements available between the 2 arrays.
+    make2([4, 5], [1, 2, 3]) → [4, 5]
+    make2([4], [1, 2, 3]) → [4, 1]
+    make2([], [1, 2]) → [1, 2] */
+    public static int[] make2(int[] a, int[] b) {
+        int[] arr = new int[2];
+        if (a.length >= 2) {
+            arr[0] = a[0];
+            arr[1] = a[1];
+        } else if (a.length == 1) {
+            arr[0] = a[0];
+            arr[1] = b[0];
+        } else {
+            arr[0] = b[0];
+            arr[1] = b[1];
+        }
+        return arr;
+    }
+
+
+    /* We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1.
+    Return true if the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
+    unlucky1([1, 3, 4, 5]) → true
+    unlucky1([2, 1, 3, 4, 5]) → true
+    unlucky1([1, 1, 1]) → false
+    */
+    public static boolean unlucky1(int[] nums) {
+        boolean rtnVal = false;
+        if (nums.length >= 2) {
+            // check first 2 elements if contains 1 & 3
+            if ((nums[0] == 1) && (nums[1] == 3)) {
+                rtnVal = true;
+            }
+            // check last 2 elements if contains 1 & 3
+            if ((nums[nums.length -2] == 1) && (nums[nums.length - 1] == 3)) {
+                rtnVal = true;
+            }
+            if (nums.length > 2) {
+                // check 2nd and 3rd elements if contains 1 & 3
+                if ((nums[1] == 1) && (nums[2] == 3)) {
+                    rtnVal = true;
+                }
+            }
+        }
+        return rtnVal;
+    }
+
+    /* Given an int array of any length, return a new array of its first 2 elements.
+    If the array is smaller than length 2, use whatever elements are present.
+    frontPiece([1, 2, 3]) → [1, 2]
+    frontPiece([1, 2]) → [1, 2]
+    frontPiece([1]) → [1] */
+    public static int[] frontPiece(int[] nums) {
+        if (nums.length >= 2) {
+            int[] arr = new int[2];
+            arr[0] = nums[0];
+            arr[1] = nums[1];
+            return arr;
+        } else if (nums.length == 1) {
+            int[] arr = new int[1];
+            arr[0] = nums[0];
+            return arr;
+        } else {
+            int[] arr = new int[0];
+            return arr;
+        }
+    }
+
+    /* Given an array of ints of odd length, look at the first, last, and middle values in the array
+    and return the largest. The array length will be at least 1.
+    maxTriple([1, 2, 3]) → 3
+    maxTriple([1, 5, 3]) → 5
+    maxTriple([5, 2, 3]) → 5
+    */
+    public static int maxTriple(int[] nums) {
+        int rtnVal = 0;
+        if ((nums.length >= 1) && (nums.length % 2 != 0)) {
+            rtnVal = nums[0];
+            if (nums.length > 1) {
+                int midPos = (nums.length - 1) / 2;
+                if (nums[midPos] > rtnVal) {
+                    rtnVal = nums[midPos];
+                }
+                if ((nums[nums.length - 1]) > rtnVal) {
+                    rtnVal = nums[nums.length - 1];
+                }
+            }
+        }
+        return rtnVal;
     }
 
     /* Given an array of ints of odd length,
