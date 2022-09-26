@@ -76,14 +76,334 @@ public class CodingbatLogic1 {
         System.out.println(fizzString("fib"));
         System.out.println(fizzString("f"));
         System.out.println(fizzString("b"));
-        */
+
         System.out.println(fizzString2(1));
         System.out.println(fizzString2(2));
         System.out.println(fizzString2(3));
         System.out.println(fizzString2(5));
         System.out.println(fizzString2(15));
+
+        System.out.println(twoAsOne(1, 2, 3));
+        System.out.println(twoAsOne(3, 1, 2));
+        System.out.println(twoAsOne(3, 2, 2));
+
+        System.out.println(inOrder(1, 2, 4, false));
+        System.out.println(inOrder(1, 2, 1, false));
+        System.out.println(inOrder(1, 1, 2, true));
+        System.out.println(inOrder(3, 2, 4, false));
+        System.out.println(inOrder(7, 5, 6, false));
+
+        System.out.println(inOrderEqual(2, 5, 11, false));
+        System.out.println(inOrderEqual(5, 7, 6, false));
+        System.out.println(inOrderEqual(5, 5, 7, true));
+
+        System.out.println(lastDigit(23, 19, 13));
+        System.out.println(lastDigit(23, 19, 12));
+        System.out.println(lastDigit(23, 19, 3));
+
+        System.out.println(lessBy10(-10, 2, 2));
+        System.out.println(lessBy10(1, 7, 11));
+        System.out.println(lessBy10(1, 7, 10));
+        System.out.println(lessBy10(11, 1, 7));
+
+        System.out.println(withoutDoubles(2, 3, true));
+        System.out.println(withoutDoubles(3, 3, true));
+        System.out.println(withoutDoubles(3, 3, false));
+        System.out.println(withoutDoubles(6, 6, true));
+
+        System.out.println(maxMod5(2, 3));
+        System.out.println(maxMod5(6, 2));
+        System.out.println(maxMod5(3, 2));
+
+        System.out.println(redTicket(2, 2, 2));
+        System.out.println(redTicket(2, 2, 1));
+        System.out.println(redTicket(0, 0, 0));
+
+        System.out.println(greenTicket(1, 2, 3));
+        System.out.println(greenTicket(2, 2, 2));
+        System.out.println(greenTicket(1, 1, 2));
+        System.out.println(greenTicket(2, 1, 1));
+
+        System.out.println(blueTicket(9, 1, 0));
+        System.out.println(blueTicket(9, 2, 0));
+        System.out.println(blueTicket(6, 1, 4));
+        System.out.println(blueTicket(15, 0, 5));
+
+        System.out.println(shareDigit(12, 23));
+        System.out.println(shareDigit(12, 43));
+        System.out.println(shareDigit(12, 44));
+        */
+        System.out.println(sumLimit(2, 3));
+        System.out.println(sumLimit(8, 3));
+        System.out.println(sumLimit(8, 1));
     }
 
+
+    /* Given 2 non-negative ints, a and b, return their sum,
+    so long as the sum has the same number of digits as a.
+    If the sum has more digits than a, just return a without b.
+    (Note: one way to compute the number of digits of a non-negative int n
+    is to convert it to a string with String.valueOf(n) and then check the length of the string.)
+    sumLimit(2, 3) → 5
+    sumLimit(8, 3) → 8
+    sumLimit(8, 1) → 9
+    */
+    public static int sumLimit(int a, int b) {
+        int rVal = 0;
+        int sumLen = String.valueOf(a + b).length();
+        int aLen = String.valueOf(a).length();
+        if (sumLen == aLen) {
+            rVal = a + b;
+        } else if (sumLen > aLen) {
+            rVal = a;
+        }
+        return rVal;
+    }
+
+    /* Given two ints, each in the range 10..99,
+    return true if there is a digit that appears in both numbers,
+    such as the 2 in 12 and 23.
+    (Note: division, e.g. n/10, gives the left digit while the % "mod" n%10 gives the right digit.)
+    shareDigit(12, 23) → true
+    shareDigit(12, 43) → false
+    shareDigit(12, 44) → false
+    */
+    public static boolean shareDigit(int a, int b) {
+        boolean rVal = false;
+        int aLeft = a / 10;
+        int bLeft = b / 10;
+        int aRight = a % 10;
+        int bRight = b % 10;
+        if (aLeft == bLeft || aLeft == bRight) {
+            rVal = true;
+        }
+        if (aRight == bLeft || aRight == bRight) {
+            rVal = true;
+        }
+        if (bLeft == aLeft || bLeft == aRight) {
+            rVal = true;
+        }
+        if (bRight == aLeft || bRight == aRight) {
+            rVal = true;
+        }
+        return rVal;
+    }
+
+    /* You have a blue lottery ticket, with ints a, b, and c on it.
+    This makes three pairs, which we'll call ab, bc, and ac.
+    Consider the sum of the numbers in each pair.
+    If any pair sums to exactly 10, the result is 10.
+    Otherwise, if the ab sum is exactly 10 more than either bc or ac sums, the result is 5.
+    Otherwise, the result is 0.
+    blueTicket(9, 1, 0) → 10
+    blueTicket(9, 2, 0) → 0
+    blueTicket(6, 1, 4) → 10
+    blueTicket(15, 0, 5) → 5
+    */
+    public static int blueTicket(int a, int b, int c) {
+        int rVal = 0;
+        int s1 = a + b;
+        int s2 = b + c;
+        int s3 = a + c;
+        if (s1 == 10 || s2 == 10 || s3 == 10) {
+            rVal = 10;
+        } else if ((Math.abs(s2 - s1) >= 10) || (Math.abs(s3 - s1) >= 10)) {
+            rVal = 5;
+        }
+        return rVal;
+    }
+
+    /* You have a green lottery ticket, with ints a, b, and c on it.
+    If the numbers are all different from each other, the result is 0.
+    If all of the numbers are the same, the result is 20.
+    If two of the numbers are the same, the result is 10.
+    greenTicket(1, 2, 3) → 0
+    greenTicket(2, 2, 2) → 20
+    greenTicket(1, 1, 2) → 10
+    greenTicket(2, 1, 1) → 10
+    */
+    public static int greenTicket(int a, int b, int c) {
+        int rVal = 0;
+        if (a == b && a == c) {
+            rVal = 20;
+        } else if ((a == b && a != c) || (a == c && a != b) || (b == c && b != a)) {
+            rVal = 10;
+        }
+        return rVal;
+    }
+
+    /* You have a red lottery ticket showing ints a, b, and c, each of which is 0, 1, or 2.
+    If they are all the value 2, the result is 10.
+    Otherwise if they are all the same, the result is 5.
+    Otherwise so long as both b and c are different from a, the result is 1.
+    Otherwise the result is 0.
+    redTicket(2, 2, 2) → 10
+    redTicket(2, 2, 1) → 0
+    redTicket(0, 0, 0) → 5
+    */
+    public static int redTicket(int a, int b, int c) {
+        int rVal = 0;
+        if (a == 2 && b == 2 && c == 2) {
+            rVal = 10;
+        } else if (a == b && b == c) {
+            rVal = 5;
+        } else if (b != a && c != a) {
+            rVal = 1;
+        }
+        return rVal;
+    }
+
+    /* Given two int values, return whichever value is larger.
+    However, if the two values have the same remainder when divided by 5,
+    then the return the smaller value.
+    However, in all cases, if the two values are the same, return 0.
+    Note: the % "mod" operator computes the remainder, e.g. 7 % 5 is 2.
+    maxMod5(2, 3) → 3
+    maxMod5(6, 2) → 6
+    maxMod5(3, 2) → 3
+    */
+    public static int maxMod5(int a, int b) {
+        int rVal = 0;
+        if (a == b) {
+            return 0;
+        }
+        // return whichever is greater
+        if (a > b) {
+            rVal = a;
+        } else {
+            rVal = b;
+        }
+        // if same remainder, return whichever is smaller
+        if (a % 5 == b % 5) {
+            if (a > b) {
+                rVal = b;
+            } else {
+                rVal = a;
+            }
+        }
+        return rVal;
+    }
+
+    /* Return the sum of two 6-sided dice rolls, each in the range 1..6.
+    However, if noDoubles is true, if the two dice show the same value,
+    increment one die to the next value, wrapping around to 1 if its value was 6.
+    withoutDoubles(2, 3, true) → 5
+    withoutDoubles(3, 3, true) → 7
+    withoutDoubles(3, 3, false) → 6
+    withoutDoubles(6, 6, true) → 7
+    */
+    public static int withoutDoubles(int die1, int die2, boolean noDoubles) {
+        int rVal = 0;
+        if (noDoubles) {
+            if (die1 == die2) {
+                if (die1 == 6) {
+                    die1 = 1;
+                } else {
+                    die1 = die1 + 1;
+                }
+            }
+        }
+        rVal = die1 + die2;
+        return rVal;
+    }
+
+    /*Given three ints, a b c, return true if one of them is 10 or more less than one of the others.
+    lessBy10(1, 7, 11) → true
+    lessBy10(1, 7, 10) → false
+    lessBy10(11, 1, 7) → true
+    lessBy10(-10, 2, 2) → true
+    */
+    public static boolean lessBy10(int a, int b, int c) {
+        boolean rVal = false;
+        if (Math.abs(a - b) >= 10) {
+            rVal = true;
+        }
+        if (Math.abs(a - c) >= 10) {
+            rVal = true;
+        }
+        if (Math.abs(b - c) >= 10) {
+            rVal = true;
+        }
+        return rVal;
+    }
+
+    /* Given three ints, a b c, return true if two or more of them have the same rightmost digit.
+    The ints are non-negative.
+    Note: the % "mod" operator computes the remainder, e.g. 17 % 10 is 7.
+    lastDigit(23, 19, 13) → true
+    lastDigit(23, 19, 12) → false
+    lastDigit(23, 19, 3) → true
+    */
+    public static boolean lastDigit(int a, int b, int c) {
+        boolean rVal = false;
+        if (a % 10 == b % 10 || b % 10 == c % 10 || a % 10 == c % 10) {
+            rVal = true;
+        }
+        return rVal;
+    }
+
+    /* Given three ints, a b c, return true if they are in strict increasing order,
+    such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7.
+    However, with the exception that if "equalOk" is true, equality is allowed,
+    such as 5 5 7 or 5 5 5.
+    inOrderEqual(2, 5, 11, false) → true
+    inOrderEqual(5, 7, 6, false) → false
+    inOrderEqual(5, 5, 7, true) → true
+    */
+    public static boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
+        boolean rVal = false;
+        if (equalOk) {
+            if (a <= b && b <= c) {
+                rVal = true;
+            }
+        } else {
+            if (a < b && b < c) {
+                rVal = true;
+            }
+        }
+        return rVal;
+    }
+
+    /* Given three ints, a b c, return true if b is greater than a, and c is greater than b.
+    However, with the exception that if "bOk" is true, b does not need to be greater than a.
+    inOrder(1, 2, 4, false) → true
+    inOrder(1, 2, 1, false) → false
+    inOrder(1, 1, 2, true) → true
+    inOrder(3, 2, 4, false) → false
+    inOrder(7, 5, 6, true) → true
+    */
+    public static boolean inOrder(int a, int b, int c, boolean bOk) {
+        boolean rVal = false;
+        if (c > b) {
+            if (!bOk) {
+                if (b > a) {
+                    rVal = true;
+                }
+            } else {
+                rVal = true;
+            }
+        }
+        return rVal;
+    }
+
+    /* Given three ints, a b c, return true if it is possible to add two of the ints to get the third.
+    twoAsOne(1, 2, 3) → true
+    twoAsOne(3, 1, 2) → true
+    twoAsOne(3, 2, 2) → false
+    */
+    public static boolean twoAsOne(int a, int b, int c) {
+        boolean rVal = false;
+        if (a + b == c) {
+            rVal = true;
+        }
+        if (a + c == b) {
+            rVal = true;
+        }
+        if (b + c == a) {
+            rVal = true;
+        }
+        return rVal;
+    }
 
     /* Given an int n, return the string form of the number followed by "!". So the int 6 yields "6!".
     Except if the number is divisible by 3 use "Fizz" instead of the number,
