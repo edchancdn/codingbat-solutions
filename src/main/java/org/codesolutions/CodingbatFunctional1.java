@@ -7,10 +7,15 @@ import java.util.stream.Collectors;
 
 public class CodingbatFunctional1 {
     public static void main(String[] args) {
+        /*
+        Functional mapping operations on lists with lambdas.
+        The main computation for each of these problems can be done with 1 line of lambda code.
+         */
+
         List<Integer> ln = new ArrayList<>(
-                Arrays.asList(1,22,3,564));
+                Arrays.asList(1, 22, 3, 564));
         List<String> ls = new ArrayList<>(
-                Arrays.asList("hi","Hello","ABC","xyz"));
+                Arrays.asList("hi", "Hello", "ABC", "xyz"));
 
         System.out.println(doubling(ln));
         System.out.println(square(ln));
@@ -21,7 +26,6 @@ public class CodingbatFunctional1 {
         System.out.println(rightDigit(ln));
         System.out.println(lower(ls));
         System.out.println(noX(ls));
-
     }
 
     /*
