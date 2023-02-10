@@ -22,14 +22,14 @@ public class CollectionsUtil {
         contactList.add(contact1);
 
         Contact contact2 = new Contact();
-        contact2.setId(2L);
+        contact2.setId(5L);
         contact2.setFirstName("Jane");
         contact2.setLastName("Deer");
         contact2.setEmail("jane@email.com");
         contactList.add(contact2);
 
         Contact contact3 = new Contact();
-        contact3.setId(3L);
+        contact3.setId(6L);
         contact3.setFirstName("Fred");
         contact3.setLastName("Campbell");
         contact1.setPhoneNumber("9059712333");
@@ -46,14 +46,14 @@ public class CollectionsUtil {
         contactList.add(contact1);
 
         Contact contact2 = new Contact();
-        contact2.setId(2L);
+        contact2.setId(5L);
         contact2.setFirstName("Jane");
         contact2.setLastName("Deer");
         contact2.setEmail("jane@email.com");
         contactList.add(contact2);
 
         Contact contact3 = new Contact();
-        contact3.setId(3L);
+        contact3.setId(6L);
         contact3.setFirstName("Fred");
         contact3.setLastName("Campbell");
         contact1.setPhoneNumber("9059712333");

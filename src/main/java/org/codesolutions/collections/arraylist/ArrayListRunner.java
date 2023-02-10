@@ -37,6 +37,15 @@ public class ArrayListRunner {
             System.out.println(contactList.get(i));
         }
 
+        Contact c3 = new Contact(3L, "Will", "Sotherby", "4162223399", "");
+
+        /** Performance impact when adding an item to a specific index on an ArrayList.
+         *  LinkedList has better performance in this use case.
+         */
+        contactList.add(1, c3);
+
+        System.out.println("After add: " + contactList);
+
         /**
          * Direct use of ArrayList.remove() will result in ConcurrentModificationException exception.
          * Note: The element will be removed, even if the exception is thrown.
