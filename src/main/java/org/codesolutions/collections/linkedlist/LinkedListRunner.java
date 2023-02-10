@@ -1,5 +1,6 @@
 package org.codesolutions.collections.linkedlist;
 
+import org.codesolutions.collections.CollectionsUtil;
 import org.codesolutions.collections.Contact;
 
 import java.util.*;
@@ -31,7 +32,9 @@ public class LinkedListRunner {
          */
         List<Contact> contactList = new LinkedList<>();
 
-        addContacts(contactList);
+        CollectionsUtil collectionsUtil = CollectionsUtil.getInstance();
+        collectionsUtil.addContactList(contactList);
+
         for (int i = 0; i < contactList.size(); i++) {
             System.out.println(contactList.get(i));
         }
@@ -67,33 +70,7 @@ public class LinkedListRunner {
 
         System.out.println("After Iterator.remove: " + contactList);
 
-        // Synchronized
-        List<Contact> synchronizedContactList = Collections.synchronizedList(new ArrayList<>());
-
+        // Thread-safe LinkedList
+        List<Contact> synchronizedContactList = Collections.synchronizedList(new LinkedList<>());
     }
-
-    private static void addContacts(List<Contact> contactList) {
-        Contact contact1 = new Contact();
-        contact1.setId(1L);
-        contact1.setFirstName("John");
-        contact1.setLastName("Doe");
-        contact1.setPhoneNumber("4169712345");
-        contactList.add(contact1);
-
-        Contact contact2 = new Contact();
-        contact2.setId(2L);
-        contact2.setFirstName("Jane");
-        contact2.setLastName("Deer");
-        contact2.setEmail("jane@email.com");
-        contactList.add(contact2);
-
-        Contact contact3 = new Contact();
-        contact3.setId(3L);
-        contact3.setFirstName("Fred");
-        contact3.setLastName("Campbell");
-        contact1.setPhoneNumber("9059712333");
-        contact3.setEmail("fred@email.com");
-        contactList.add(contact3);
-    }
-
 }

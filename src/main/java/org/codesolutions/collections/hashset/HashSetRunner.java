@@ -1,5 +1,6 @@
 package org.codesolutions.collections.hashset;
 
+import org.codesolutions.collections.CollectionsUtil;
 import org.codesolutions.collections.Contact;
 
 import java.util.*;
@@ -22,62 +23,39 @@ public class HashSetRunner {
          *    it is backed by a hash table (HashMap instance)
          *    This class offers constant time performance for the basic operations
          *       (add, remove, contains and size)
-         *    Iteration over a LinkedHashSet requires time proportional to the size of the set.
+         *    Iteration over a HashSet requires time proportional to the capacity of the set.
          */
 
         Set<Contact> contactList = new HashSet<>();
 
-        addContacts(contactList);
+        CollectionsUtil collectionsUtil = CollectionsUtil.getInstance();
+        collectionsUtil.addContactSet(contactList);
 
-        Contact findContact = new Contact();
-        findContact.setId(2L);
-        findContact.setFirstName("Jane");
-        findContact.setLastName("Deer");
-        findContact.setEmail("jane@email.com");
-
+        Contact findContact = new Contact(2L, "Jane", "Deer",
+                null, "jane@email.com");
         System.out.println("Contact found: " + contactList.contains(findContact));
 
         /**
          * Iterator is an interface that belongs to the Collections framework.
          *    Iterator.hasNext() returns true if the iteration has more elements.
-         *    Iterator.next() returns the next element in the iteration.
          *    Iterator.remove() safely removes the element from the iteration.
+         *    Iterator.next() returns the next element in the iteration.
          */
         Iterator<Contact> itr = contactList.iterator();
         while (itr.hasNext()) {
-            Contact contact = itr.next();  // use this to get/read the next element
+            Contact contact = itr.next();
             if (contact.getFirstName().equals("Fred")) {
                 itr.remove(); }
         }
 
         System.out.println("After Iterator.remove: " + contactList);
 
-        // Synchronized
-        List<Contact> synchronizedContactList = Collections.synchronizedList(new ArrayList<>());
+        System.out.println("Collection elements:");
+        for (Contact contact: contactList) {
+            System.out.println(contact);
+        }
 
-    }
-
-    private static void addContacts(Set<Contact> contactList) {
-        Contact contact1 = new Contact();
-        contact1.setId(1L);
-        contact1.setFirstName("John");
-        contact1.setLastName("Doe");
-        contact1.setPhoneNumber("4169712345");
-        contactList.add(contact1);
-
-        Contact contact2 = new Contact();
-        contact2.setId(2L);
-        contact2.setFirstName("Jane");
-        contact2.setLastName("Deer");
-        contact2.setEmail("jane@email.com");
-        contactList.add(contact2);
-
-        Contact contact3 = new Contact();
-        contact3.setId(3L);
-        contact3.setFirstName("Fred");
-        contact3.setLastName("Campbell");
-        contact1.setPhoneNumber("9059712333");
-        contact3.setEmail("fred@email.com");
-        contactList.add(contact3);
+        // Thread-safe HashSet
+        Set<Contact> synchronizedContactList = Collections.synchronizedSet(new HashSet<>());
     }
 }

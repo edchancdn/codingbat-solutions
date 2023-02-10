@@ -1,5 +1,6 @@
 package org.codesolutions.collections.arraylist;
 
+import org.codesolutions.collections.CollectionsUtil;
 import org.codesolutions.collections.Contact;
 
 import java.util.*;
@@ -18,6 +19,8 @@ public class ArrayListRunner {
          *    The user can access the elements by their integer index.
          *    List allows duplicate elements.
          *    Allows null elements.
+         * Array is a data structure that collects elements of the same data type
+         *    and store them in a contiguous and adjacent memory locations.
          * ArrayList is the resizable array implementation of the List interface.
          *    The size, isEmpty, get, set, iterator, and listIterator operations run in constant time.
          *       The add operation runs in amortized constant time,
@@ -27,7 +30,9 @@ public class ArrayListRunner {
          */
         List<Contact> contactList = new ArrayList<>();
 
-        addContacts(contactList);
+        CollectionsUtil collectionsUtil = CollectionsUtil.getInstance();
+        collectionsUtil.addContactList(contactList);
+
         for (int i = 0; i < contactList.size(); i++) {
             System.out.println(contactList.get(i));
         }
@@ -63,32 +68,7 @@ public class ArrayListRunner {
 
         System.out.println("After Iterator.remove: " + contactList);
 
-        // Synchronized
+        // Thread-safe ArrayList
         List<Contact> synchronizedContactList = Collections.synchronizedList(new ArrayList<>());
-
-    }
-
-    private static void addContacts(List<Contact> contactList) {
-        Contact contact1 = new Contact();
-        contact1.setId(1L);
-        contact1.setFirstName("John");
-        contact1.setLastName("Doe");
-        contact1.setPhoneNumber("4169712345");
-        contactList.add(contact1);
-
-        Contact contact2 = new Contact();
-        contact2.setId(2L);
-        contact2.setFirstName("Jane");
-        contact2.setLastName("Deer");
-        contact2.setEmail("jane@email.com");
-        contactList.add(contact2);
-
-        Contact contact3 = new Contact();
-        contact3.setId(3L);
-        contact3.setFirstName("Fred");
-        contact3.setLastName("Campbell");
-        contact1.setPhoneNumber("9059712333");
-        contact3.setEmail("fred@email.com");
-        contactList.add(contact3);
     }
 }
